@@ -53,12 +53,13 @@ contract ZuniswapV2Pair is ERC20, Math {
         address indexed to
     );
 
+    /**
+     * @dev 防止重入攻击
+     */
     modifier nonReentrant() {
         require(!isEntered);
         isEntered = true;
-
         _;
-
         isEntered = false;
     }
 
